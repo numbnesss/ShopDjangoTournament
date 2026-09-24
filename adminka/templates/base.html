@@ -1,0 +1,31 @@
+{% load static %}
+<!doctype html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shop admin</title>
+    <link rel="shortcut icon" href="{% static 'img/favicon.png' %}" type="image/x-icon">
+    <script defer src="{% static 'bootstrap/js/bootstrap.bundle.js' %}"></script>
+    <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+{% block header %}
+<header class="border-bottom bg-white">
+    <nav class="container d-flex align-items-center gap-4 py-3">
+        <a href="{% url 'ad:categories' %}" class="brand">Shop admin</a>
+        <a href="{% url 'ad:categories' %}" class="text-decoration-none">Категории</a>
+        <a href="{% url 'ad:orders' %}" class="text-decoration-none">Заказы</a>
+        <form method="post" action="{% url 'ad:logout' %}" class="ms-auto m-0">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-link text-decoration-none text-secondary p-0">Выйти</button>
+        </form>
+    </nav>
+</header>
+{% endblock %}
+<main class="container py-4">
+    {% block content %}{% endblock %}
+</main>
+</body>
+</html>
